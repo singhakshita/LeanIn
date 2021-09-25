@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Bank Demo</title>
+  </head>
+  <body>
+    <header class="main__header">
+      <ul class="main__header-items">
+        <li class="main__header-item"><a href="#home">Home</a></li>
+        <li class="main__header-item"><a href="#deposit">Deposit</a></li>
+        <li class="main__header-item"><a href="#withdraw">Withdraw</a></li>
+        <li class="main__header-item"><a href="#loan">loan</a></li>
+      </ul>
+      <input type="text" />
+    </header>
+    <main>
+      <div id="home" class="main__heading">Welcome To Our Bank ABC</div>
+      <div class="main__cards">
+        <div class="main__card">
+          <div class="main__card-heading">Benifits</div>
+          <ul>
+            <li>24 X 7 Availability</li>
+            <li>Awesome Customer Support</li>
+          </ul>
+        </div>
+        <div class="main__card active__card">
+          <div class="main__card-heading">Offers</div>
+          <ul>
+            <li>Low interest Rate for loans</li>
+            <li>Life Insurance Policies</li>
+          </ul>
+        </div>
+        <div class="main__card">
+          <div class="main__card-heading">Why Us</div>
+          <ul>
+            <li>24 X 7 Availability</li>
+            <li>Awesome Customer Support</li>
+          </ul>
+        </div>
+      </div>
+      <div class="account">
+        <div class="account__holder">
+          <div class="account__holder-avatar"></div>
+          <div class="account__holder_detail">
+            <div>Name        : ABC</div>
+            <div>Account No. : 8889900000000</div>
+            <div>Type        : Savings</div>
+            <div>Balance     : 23234444</div>
+          </div>
+        </div>
+        <div class="account__transaction"> All Transactions
+          <div class="account__transaction__withdraw"> Rs 200000</div>
+          <div class="account__transaction__deposit">Rs 56889</div>
+        </div>
+        </div>
+      </div>
+      <div id="deposit" class="main__method deposit">
+        <div class="main__method__header">
+          <div class="main__method__header-item">Deposits</div>
+          <div class="main__method__header-item">Sort</div>
+        </div>
+        <div class="main__method__actions">
+          <div class="main__method__cards">
+            <div class="main__method-card">
+              Rs. 2000 Deposited Dated : 20/10/2000
+            </div>
+            <div class="main__method-card">
+              Rs. 2000 Deposited Dated : 20/10/2000
+            </div>
+            <div class="main__method-card">
+              Rs. 2000 Deposited Dated : 20/10/2000
+            </div>
+          </div>
+          <div class="main__method__add">
+            <label> Amount </label>
+            <input type="text" />
+            <button>Add</button>
+          </div>
+        </div>
+      </div>
+      <div id="withdraw" class="main__method Withdraw">
+        <div class="main__method__header">
+          <div class="main__method__header-item">Withdraw</div>
+          <div class="main__method__header-item">Sort</div>
+        </div>
+        <div class="main__method__actions">
+          <div class="main__method__cards">
+            <div class="main__method-card">
+              Rs. 2000 Withdrawn Dated : 20/10/2000
+            </div>
+            <div class="main__method-card">
+              Rs. 2000 Withdrawn Dated : 20/10/2000
+            </div>
+            <div class="main__method-card">
+              Rs. 2000 Withdrawn Dated : 20/10/2000
+            </div>
+          </div>
+          <div class="main__method__add">
+            <label> Amount </label>
+            <input type="text" />
+            <button>Withdraw</button>
+          </div>
+        </div>
+      </div>
+      <div id="loan" class="main__method Loan">
+        <div class="main__method__header">
+          <div class="main__method__header-item">Loan</div>
+        </div>
+        <div class="main__method__actions">
+          <div class="main__method__add">
+            <label> Amount </label>
+            <input type="text" />
+            <button>Withdraw</button>
+          </div>
+          <div class="main__method__cards">
+            Loan can only be Approved if
+          </div>
+        </div>
+      </div>
+      
+    </main>
+    <footer>copyrights@akshitasingh</footer>
+  </body>
+</html>
