@@ -11,6 +11,7 @@ const withdraw = [
 ];
 
 const inputName = document.querySelector("#name");
+const deposit = document.getElementById("deposit");
 const heading = document.querySelector(".main__heading");
 const cards = document.querySelector(".main__cards");
 const eachCard = document.querySelectorAll(".main__card");
@@ -21,8 +22,22 @@ inputName.addEventListener("keydown", (event) => {
     updateValue(inputName.value);
     inputName.value = "";
   }
+  readAndDisplayInput(inputName, heading);
 });
 
+// which should take input
+
+const readAndDisplayInput = function (inputField, domField) {
+  const value = inputField.value;
+  if (inputField == name) {
+    const html = `<div class="main__method-card">
+    Rs. 2000 Deposited Dated : 20/10/2000
+  </div>`;
+  }
+
+  const msg = `loan is approved`;
+  domField.insertAdjacentHtml(beforeend, html);
+};
 cards.addEventListener("click", (event) => {
   cards.style.backgroundColor = "red";
   eachCard.forEach((elem) => elem.classList.remove("active__card"));
@@ -39,6 +54,6 @@ cards.addEventListener("click", (event) => {
   newElem.forEach((elem) => cards.insertAdjacentElement("beforeend", elem));
 });
 const updateValue = function (name) {
-  heading.innerHTML = `Welcome to our Bank ${name} `;
+  const paddedName = name.pad("", max);
+  heading.innerHTML = `Welcome to our Bank ${paddedName} `;
 };
-
