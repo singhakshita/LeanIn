@@ -1,31 +1,8 @@
-const deposit = [
-  { amount: 28000, date: "12/10/2000" },
-  { amount: 90000, date: "12/11/2000" },
-  { amount: 28800, date: "12/12/2000" },
-];
-
-const withdraw = [
-  { amount: 28000, date: "12/10/2000" },
-  { amount: 90000, date: "12/11/2000" },
-  { amount: 28800, date: "12/12/2000" },
-];
-
 const inputName = document.querySelector("#name");
 const deposit = document.getElementById("deposit");
 const heading = document.querySelector(".main__heading");
 const cards = document.querySelector(".main__cards");
 const eachCard = document.querySelectorAll(".main__card");
-
-inputName.addEventListener("keydown", (event) => {
-  console.log(event);
-  if (event.key == "Enter") {
-    updateValue(inputName.value);
-    inputName.value = "";
-  }
-  readAndDisplayInput(inputName, heading);
-});
-
-// which should take input
 
 const readAndDisplayInput = function (inputField, domField) {
   const value = inputField.value;
@@ -34,12 +11,10 @@ const readAndDisplayInput = function (inputField, domField) {
     Rs. 2000 Deposited Dated : 20/10/2000
   </div>`;
   }
-
   const msg = `loan is approved`;
   domField.insertAdjacentHtml(beforeend, html);
 };
 cards.addEventListener("click", (event) => {
-  cards.style.backgroundColor = "red";
   eachCard.forEach((elem) => elem.classList.remove("active__card"));
   const elem = event.target.closest(".main__card");
   elem.classList.add("active__card");
