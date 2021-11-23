@@ -12,4 +12,3 @@ arr.map((item) => {
 });
 console.log("hi");
 const request = new XMLHttpRequest();
-rsole.log(err));

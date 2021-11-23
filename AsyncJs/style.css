@@ -26,6 +26,7 @@ h1 {
   padding: 2rem;
   width: 100%;
   height: 100%;
+  margin-top: 5rem;
 }
 .quote {
   display: flex;
@@ -90,20 +91,54 @@ input {
   border: 1px solid black;
 }
 .special__quote {
-  margin: 1rem 0;
+  display: flex;
+
   text-align: center;
-  background-image: linear-gradient(
-    to right,
-    #ff8177 0%,
-    #ff867a 0%,
-    #ff8c7f 21%,
-    #f99185 52%,
-    #cf556c 78%,
-    #b12a5b 100%
-  );
+  /* background: linear-gradient(
+      to right,
+      #ff8177 0%,
+      #ff867a 0%,
+      #ff8c7f 21%,
+      #f99185 52%,
+      #cf556c 78%,
+      #b12a5b 100%
+    ),
+    url("./asset/quoteHeader.jpg"); */
+
+  background: linear-gradient(
+      to right,
+      #ff807788 0%,
+      #ff857a71 0%,
+      #ff8c7f70 21%,
+      #f9908588 52%,
+      #cf556b56 78%,
+      #b12a5b5d 100%
+    ),
+    url(./asset/wall.jpg);
+  background-position: center top 20%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  clip-path: polygon(0 0, 100% 0, 100% 63%, 0 100%);
   color: white;
   width: 100vw;
+  height: 20rem;
   font-weight: 800;
   font-size: 32px;
   padding: 0.5rem;
+  align-items: center;
+  justify-content: center;
+}
+.special__quote__text {
+  box-shadow: 5px 5px 5px 5px rgba(22, 21, 21, 0.267);
+  font-size: 24px;
+  position: absolute;
+  z-index: 5;
+  width: 50%;
+  height: 10rem;
+  top: 30%;
+  left: 25%;
+  padding-top: 4rem;
+  text-align: center;
+  background-color: white;
+  color: rgb(85, 131, 85);
 }
