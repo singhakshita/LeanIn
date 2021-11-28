@@ -1,0 +1,15 @@
+{
+  "name": "quote",
+  "version": "1.0.0",
+  "description": "quote api usage",
+  "default": "index.html",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html --dist-dir ./dist"
+  },
+  "author": "Akshita Singh",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.0.1"
+  }
+}

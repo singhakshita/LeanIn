@@ -1,0 +1,229 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  height: 100vh;
+  width: 100vw;
+}
+h1 {
+  text-align: center;
+}
+.change_green {
+  background-color: rgb(63, 141, 141);
+}
+.change_red {
+  background-color: rgb(160, 62, 32);
+}
+.image {
+  height: 100px;
+  width: 100px;
+}
+.quotes {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 2rem;
+  width: 100%;
+  height: 100%;
+  margin-top: 5rem;
+}
+.quote {
+  display: flex;
+  flex-direction: column;
+  padding: 0.2rem;
+  margin: 0.5rem;
+
+  background: linear-gradient(
+      rgba(11, 122, 7, 0.45),
+      rgba(121, 230, 166, 0.808)
+    ),
+    url(./asset/backgroud.jpg);
+  background-position: center;
+  background-size: cover;
+  color: rgb(255, 248, 248);
+  box-shadow: 5px 5px 5px 5px rgba(22, 21, 21, 0.267);
+  height: 300px;
+  width: 300px;
+  border: 1px solid rgb(94, 5, 102);
+}
+.quote__text {
+  text-align: center;
+  font-size: 20px;
+  padding: 0.5rem;
+  height: 150px;
+  font-weight: 400;
+}
+.quote__data {
+  text-align: center;
+  font-size: 16px;
+  padding: 0.5rem;
+  height: 150px;
+  font-weight: 400;
+}
+.quote__data__author {
+  text-align: right;
+  font-size: 20px;
+  padding: 0.5rem;
+  font-weight: 400;
+  font-family: cursive;
+}
+.main__header {
+  display: flex;
+  padding: 0.5rem;
+  background-image: linear-gradient(
+    to right,
+    #ff8177 0%,
+    #ff867a 0%,
+    #ff8c7f 21%,
+    #f99185 52%,
+    #cf556c 78%,
+    #b12a5b 100%
+  );
+  align-items: center;
+  justify-content: space-between;
+}
+.header_heading {
+  margin: 0;
+  padding: 0;
+  color: #fff;
+}
+input {
+  display: block;
+  width: 12rem;
+  height: 3rem;
+  padding: 0.5rem;
+  outline: none;
+  font-size: 20px;
+  border-radius: 8px;
+  border: 1px solid black;
+}
+.special__quote {
+  display: flex;
+
+  text-align: center;
+  /* background: linear-gradient(
+        to right,
+        #ff8177 0%,
+        #ff867a 0%,
+        #ff8c7f 21%,
+        #f99185 52%,
+        #cf556c 78%,
+        #b12a5b 100%
+      ),
+      url("./asset/quoteHeader.jpg"); */
+
+  background: linear-gradient(
+      to right,
+      #ff807788 0%,
+      #ff857a71 0%,
+      #ff8c7f70 21%,
+      #f9908588 52%,
+      #cf556b56 78%,
+      #b12a5b5d 100%
+    ),
+    url(./asset/wall.jpg);
+  background-position: center top 20%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  clip-path: polygon(0 0, 100% 0, 100% 63%, 0 100%);
+  color: white;
+  width: 100vw;
+  height: 20rem;
+  font-weight: 800;
+  font-size: 32px;
+  padding: 0.5rem;
+  align-items: center;
+  justify-content: center;
+}
+.special__quote__text {
+  box-shadow: 5px 5px 5px 5px rgba(22, 21, 21, 0.267);
+  font-size: 24px;
+  position: absolute;
+  z-index: 5;
+  width: 50%;
+  height: 10rem;
+  top: 30%;
+  left: 25%;
+  padding-top: 4rem;
+  text-align: center;
+  background-color: white;
+  color: rgb(85, 131, 85);
+}
+
+.main__body {
+  display: flex;
+  margin: 1rem;
+  padding: 1rem;
+
+  height: 100%;
+  width: 100%;
+}
+.main__body-quotes {
+  width: 70%;
+
+  height: 100%;
+}
+.main__body-quote {
+  display: flex;
+  width: 80%;
+  /* border: 1px solid rgb(51, 3, 3); */
+  border-radius: 0 0rem 3rem 0;
+  box-shadow: 5px 5px 5px 5px rgba(22, 21, 21, 0.616);
+  height: 12rem;
+  margin: 2rem;
+}
+.main__body-quote__img {
+  display: block;
+  width: 30%;
+  height: 100%;
+}
+.main__body-quote__data {
+  width: 70%;
+
+  height: 100%;
+}
+.main__body--side-pallete {
+  height: 100%;
+  width: 30%;
+  margin: 2rem;
+}
+.odd {
+  margin-left: 7rem;
+}
+.main__body-quote__data-genre {
+  font-size: 20px;
+  font-weight: bold;
+  color: rgb(166, 3, 207);
+  text-align: center;
+  margin: 0.5rem 0 1rem 0;
+}
+.main__body-quote__data-text {
+  font-size: 18px;
+  font-weight: bold;
+  color: rgb(84, 12, 102);
+  text-align: center;
+  font-family: "Times New Roman", Times, serif;
+}
+.main__body-quote__data-author {
+  padding: 1rem;
+  font-size: 20px;
+  font-weight: bold;
+  color: rgb(166, 3, 207);
+  text-align: right;
+  margin: 0.5rem 0;
+  font-family: fantasy;
+}
+.main__body--side-pallete {
+  height: 100%;
+  width: 30%;
+  margin: 2rem;
+}
+.side__pallete--item {
+  display: flex;
+  width: 80%;
+  align-items: center;
+}
+.side__pallete-type {
+  background-image: url() center/cover;
+}
