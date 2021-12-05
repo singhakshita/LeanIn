@@ -221,9 +221,25 @@ input {
 }
 .side__pallete--item {
   display: flex;
+  height: 100px;
+  width: 300px;
   width: 80%;
-  align-items: center;
+  background-color: #ca3169;
+  color: #fff;
+  margin: 1rem;
 }
 .side__pallete-type {
-  background-image: url() center/cover;
+  width: 100px;
+  height: 100px;
+  background: url("./asset/poem.png") center/cover;
+}
+.side__pallete--data {
+  align-items: center;
+  justify-content: center;
+}
+.type__author {
+  background: url("./asset/poem.png") center/cover;
+}
+.type__genre {
+  background: url("./asset/genres.png") center/cover;
 }

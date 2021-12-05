@@ -25,26 +25,41 @@ export const quoteState = async (url) => {
     state.quotes.push(quoteObj);
   });
 };
+export const fetchSearchData = async (params) => {
+  const url = `https://quote-garden.herokuapp.com/api/v3/quotes?author=${params}`;
+  const data = await helper.getJson(url);
+  data.data.forEach((elem) => {
+    const obj = helper.createObject(elem);
+    state.searchData.push(obj);
+  });
+};
 
-export async function searchHandler(params) {
-  try {
-    const authorData = await helper.getJson(
-      `https://quote-garden.herokuapp.com/api/v3/quotes?author=${params}`
-    );
-    console.log(authorData.data);
-    authorData.data.forEach((elem) => {
-      console.log(elem, "hi");
-      console.log(helper.createObject(elem));
-      state.searchData.push(helper.createObject(elem));
-    });
-  } catch (err) {
-    const genreData = await helper.getJson(
-      `https://quote-garden.herokuapp.com/api/v3/quotes?genre=${params}`
-    );
-    // genreData.data.forEach((elem) => {
-    //   state.searchData.push(helper.createObject(elem));
-    // });
+export const fetchAuthorsName = async (url) => {
+  const data = await helper.getJson(url);
+  for (let a = 1; a <= 20; a++) {
+    state.authors.push(data.data[a]);
   }
-}
+};
+export const fetchGenresName = async (url) => {
+  const data = await helper.getJson(url);
 
-//Eleanor
+  for (let a = 1; a <= 20; a++) {
+    state.genres.push(data.data[a]);
+  }
+};
+
+export const fetchDataOnClick = async (type, id) => {
+  let url;
+  if (type == 0) {
+    url = `https://quote-garden.herokuapp.com/api/v3/quotes?author=${id}`;
+  } else {
+    url = `https://quote-garden.herokuapp.com/api/v3/quotes?genre=${id}`;
+  }
+
+  const data = await helper.getJson(url);
+  state.quotes = [];
+  data.data.forEach((elem) => {
+    const obj = helper.createObject(elem);
+    state.quotes.push(obj);
+  });
+};

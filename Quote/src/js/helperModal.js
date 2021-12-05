@@ -5,7 +5,7 @@ export const getJson = async function (url) {
   return jsonData;
 };
 
-export const createObject = () => {
+export const createObject = (elem) => {
   const quoteObj = {
     author: elem.quoteAuthor,
     genre: elem.quoteGenre,

@@ -467,28 +467,39 @@ var _randomQuoteView = require("./views/RandomQuoteView");
 var _randomQuoteViewDefault = parcelHelpers.interopDefault(_randomQuoteView);
 var _searchView = require("./views/SearchView");
 var _searchViewDefault = parcelHelpers.interopDefault(_searchView);
+var _sidePlatteViews = require("./views/SidePlatteViews");
+var _sidePlatteViewsDefault = parcelHelpers.interopDefault(_sidePlatteViews);
 async function getQuoteData() {
     await _modal.imagesState("https://api.unsplash.com/photos/?client_id=Zf7YB9W9lM19EQ0FPkGLrOFQyTJPPk1Z5BVZSgs6nK0");
     await _modal.quoteState("https://quote-garden.herokuapp.com/api/v3/quotes/");
+    await _modal.fetchAuthorsName("https://quote-garden.herokuapp.com/api/v3/authors/");
+    await _modal.fetchGenresName("https://quote-garden.herokuapp.com/api/v3/genres/");
     _startViewDefault.default.setStartPage(_modal.state.images, _modal.state.quotes);
     _randomQuoteViewDefault.default.setRandom(_modal.state.quotes);
+    _sidePlatteViewsDefault.default.displayData(_modal.state.genres, 1);
 }
 const searchHandler = (params)=>{
-    setSearchData(params);
+    getSearchData(params);
+    console.log(params);
 };
-const setSearchData = async (params)=>{
-    await _modal.searchHandler(params);
-    console.log(_modal.state.searchData);
+const getSearchData = async (param)=>{
+    await _modal.fetchSearchData(param);
+    _startViewDefault.default.setStartPage(_modal.state.images, _modal.state.searchData);
+};
+const sidePalletClickhandler = async (type, id)=>{
+    await _modal.fetchDataOnClick(type, id);
+    _startViewDefault.default.setStartPage(_modal.state.images, _modal.state.quotes);
 };
 //https://quote-garden.herokuapp.com/api/v3/quotes?author=Eleanor&limit=1
 //https://api.unsplash.com/photos/?client_id=Zf7YB9W9lM19EQ0FPkGLrOFQyTJPPk1Z5BVZSgs6nK0
 function init() {
     getQuoteData();
     _searchViewDefault.default.onSearchHandler(searchHandler);
+    _sidePlatteViewsDefault.default.clickHandler(sidePalletClickhandler);
 }
 init();
 
-},{"./modal":"48dFD","./views/StartView":"eKMeO","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","./views/RandomQuoteView":"d13oS","./views/SearchView":"2s4vs"}],"48dFD":[function(require,module,exports) {
+},{"./modal":"48dFD","./views/StartView":"eKMeO","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","./views/RandomQuoteView":"d13oS","./views/SearchView":"2s4vs","./views/SidePlatteViews":"gNAsw"}],"48dFD":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "state", ()=>state
@@ -497,9 +508,14 @@ parcelHelpers.export(exports, "imagesState", ()=>imagesState
 );
 parcelHelpers.export(exports, "quoteState", ()=>quoteState
 );
-parcelHelpers.export(exports, "searchHandler", ()=>searchHandler
-) //Eleanor
-;
+parcelHelpers.export(exports, "fetchSearchData", ()=>fetchSearchData
+);
+parcelHelpers.export(exports, "fetchAuthorsName", ()=>fetchAuthorsName
+);
+parcelHelpers.export(exports, "fetchGenresName", ()=>fetchGenresName
+);
+parcelHelpers.export(exports, "fetchDataOnClick", ()=>fetchDataOnClick
+);
 var _helperModal = require("./helperModal");
 const state = {
     quotes: [],
@@ -525,22 +541,33 @@ const quoteState = async (url)=>{
         state.quotes.push(quoteObj);
     });
 };
-async function searchHandler(params) {
-    try {
-        const authorData = await _helperModal.getJson(`https://quote-garden.herokuapp.com/api/v3/quotes?author=${params}`);
-        console.log(authorData.data);
-        authorData.data.forEach((elem)=>{
-            console.log(elem, "hi");
-            console.log(_helperModal.createObject(elem));
-            state.searchData.push(_helperModal.createObject(elem));
-        });
-    } catch (err) {
-        const genreData = await _helperModal.getJson(`https://quote-garden.herokuapp.com/api/v3/quotes?genre=${params}`);
-    // genreData.data.forEach((elem) => {
-    //   state.searchData.push(helper.createObject(elem));
-    // });
-    }
-}
+const fetchSearchData = async (params)=>{
+    const url = `https://quote-garden.herokuapp.com/api/v3/quotes?author=${params}`;
+    const data = await _helperModal.getJson(url);
+    data.data.forEach((elem)=>{
+        const obj = _helperModal.createObject(elem);
+        state.searchData.push(obj);
+    });
+};
+const fetchAuthorsName = async (url)=>{
+    const data = await _helperModal.getJson(url);
+    for(let a = 1; a <= 20; a++)state.authors.push(data.data[a]);
+};
+const fetchGenresName = async (url)=>{
+    const data = await _helperModal.getJson(url);
+    for(let a = 1; a <= 20; a++)state.genres.push(data.data[a]);
+};
+const fetchDataOnClick = async (type, id)=>{
+    let url;
+    if (type == 0) url = `https://quote-garden.herokuapp.com/api/v3/quotes?author=${id}`;
+    else url = `https://quote-garden.herokuapp.com/api/v3/quotes?genre=${id}`;
+    const data = await _helperModal.getJson(url);
+    state.quotes = [];
+    data.data.forEach((elem)=>{
+        const obj = _helperModal.createObject(elem);
+        state.quotes.push(obj);
+    });
+};
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","./helperModal":"eYbc6"}],"ciiiV":[function(require,module,exports) {
 exports.interopDefault = function(a) {
@@ -584,7 +611,7 @@ const getJson = async function(url) {
     const jsonData = data.json();
     return jsonData;
 };
-const createObject = ()=>{
+const createObject = (elem)=>{
     const quoteObj = {
         author: elem.quoteAuthor,
         genre: elem.quoteGenre,
@@ -666,6 +693,7 @@ class SearchView extends _parentDefault.default {
         this._searchBox.addEventListener("keydown", (event)=>{
             if (event.key == "Enter") {
                 const params = this._searchBox.value;
+                this._searchBox.value = "";
                 handler(params);
             }
         });
@@ -673,6 +701,37 @@ class SearchView extends _parentDefault.default {
 }
 exports.default = new SearchView();
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","./Parent":"hi6Z1"}]},["kS06O","lA0Es"], "lA0Es", "parcelRequireacc1")
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","./Parent":"hi6Z1"}],"gNAsw":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+class SidePalleteViews {
+    _mainPallet = document.querySelector(".main__body--side-pallete");
+    getHtml = (type, item)=>{
+        const className = type == 0 ? "type__author" : "type__genre";
+        const html = `<div class="side__pallete--item" data-type="${type}" id="${item}">
+    <div class="side__pallete-type ${className}" ></div>
+    <div class="side__pallete-data">${item.toUpperCase()}</div>
+  </div>`;
+        return html;
+    };
+    displayData = (arr, type)=>{
+        this._mainPallet.innerHTML = "";
+        arr.forEach((elem)=>{
+            const html = this.getHtml(type, elem);
+            this._mainPallet.insertAdjacentHTML("beforeend", html);
+        });
+    };
+    clickHandler(handler) {
+        this._mainPallet.addEventListener("click", function(event) {
+            const obj = event.target.closest(".side__pallete--item");
+            const type = obj.dataset.type;
+            const id = obj.id;
+            handler(type, id);
+        });
+    }
+}
+exports.default = new SidePalleteViews();
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}]},["kS06O","lA0Es"], "lA0Es", "parcelRequireacc1")
 
 //# sourceMappingURL=index.05cf099e.js.map

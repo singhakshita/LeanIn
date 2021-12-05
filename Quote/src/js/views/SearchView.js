@@ -6,6 +6,7 @@ class SearchView extends Parent {
     this._searchBox.addEventListener("keydown", (event) => {
       if (event.key == "Enter") {
         const params = this._searchBox.value;
+        this._searchBox.value = "";
         handler(params);
       }
     });
