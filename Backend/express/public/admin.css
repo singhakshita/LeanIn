@@ -1,0 +1,31 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+html {
+  box-sizing: border-box;
+
+  background-color: rgb(213, 200, 224);
+}
+.main-header {
+  display: flex;
+  height: 3rem;
+  background-color: aqua;
+}
+.nav {
+  display: flex;
+  align-items: center;
+}
+.menu-items {
+  text-decoration: none;
+  padding: 0.5rem;
+  justify-content: space-around;
+  display: flex;
+  list-style: none;
+}
+li {
+  display: block;
+}
+a {
+  text-decoration: none;
+}
