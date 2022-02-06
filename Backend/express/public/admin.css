@@ -17,15 +17,19 @@ html {
   align-items: center;
 }
 .menu-items {
+  list-style: none;
   text-decoration: none;
   padding: 0.5rem;
-  justify-content: space-around;
+  margin: 0.5rem;
   display: flex;
-  list-style: none;
 }
 li {
-  display: block;
+  list-style: none;
+  text-decoration: none;
+  margin: 0.5rem;
+  color: aliceblue;
 }
 a {
   text-decoration: none;
+  color: aliceblue;
 }
