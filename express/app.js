@@ -1,20 +1,23 @@
-const http = require("http"); // node package
+const http = require("http");
 const path = require("path");
 
-const express = require("express"); // third party lib
+const express = require("express");
+const parser = require("body-parser");
 
-const app = express(); // valid request handler
+const adminRoutes = require("./routes/adminRoutes");
+const shopRoutes = require("./routes/shopRoutes");
+
+const app = express();
+app.set("view engine", "pug");
+app.set("views", "views");
+
+app.use(express.static("public"));
+app.use(parser.urlencoded({ extended: true }));
+app.use(adminRoutes);
+app.use(shopRoutes);
 
 app.use((req, res, next) => {
-  console.log("hello");
-  next();
-});
-app.use((req, res, next) => {
-  res.sendFile(path.join(__dirname, "views", "shop.html"));
-  next();
-});
-app.use((req, res, next) => {
-  console.log("i ll not print");
+  res.render("error", { pagetitle: "Error 404" });
 });
 
 const server = http.createServer(app);

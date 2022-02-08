@@ -17,10 +17,15 @@
       </nav>
     </header>
     <main>
-      <form action="/products" method="POST">
-        <input type="text" name="title" />
+      <form class="admin-form" action="/products" method="POST">
+        <input type="text" name="title" placeholder="product title" />
         <button type="submit">SEND</button>
       </form>
+      <div class="product">
+        <div class="product-image"></div>
+        <div class="product-price">Price</div>
+        <div class="product-title">My First Product</div>
+      </div>
     </main>
   </body>
 </html>

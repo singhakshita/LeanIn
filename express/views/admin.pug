@@ -1,0 +1,10 @@
+extends layouts/main.pug
+
+block contents
+    form.admin-form(action='/products' method='POST')
+      input(type='text' name='title' placeholder='product title')
+      button(type='submit') SEND
+    .product
+      .product-image
+      .product-price Price
+      .product-title My First Product
