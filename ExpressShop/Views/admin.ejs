@@ -1,0 +1,14 @@
+<%- include('./includes/header.ejs') %>
+<link rel="stylesheet" href="/admin.css" />
+<main class="main-admin">
+  <form class="main-admin__form" action="/products" method="post">
+    <h3>Add the product</h3>
+
+    <input type="text" name="title" placeholder="product title" />
+    <input type="url" name="imageUrl" placeholder="image url" />
+    <input type="text" name="description" placeholder="product description" />
+    <input type="text" name="price" placeholder="product price" />
+    <button type="submit">SEND</button>
+  </form>
+</main>
+<%- include('./includes/footer.ejs') %>
