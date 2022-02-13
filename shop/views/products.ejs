@@ -1,0 +1,46 @@
+<%- include('./includes/header.ejs') %>
+    <link rel="stylesheet" href="/products.css">
+    <main class="main-product">
+      <div class="products">
+        <div class="product">
+          <img
+            src="https://images-na.ssl-images-amazon.com/images/I/819HSIKiWdS.jpg"
+            alt="Book image"
+          />
+          <div class="product-details">
+            <div class="product-title">Pride and Perjudice</div>
+            <div class="product-description">
+              written by : Jane Austen .The best classical novel
+            </div>
+            <div class="product-price">$23</div>
+          </div>
+          <div class="product-button">
+            <a class="link-button" href="/productDetail">Details</a>
+            <a class="link-button" href="/cart">Add to card</a>
+          </div>
+        </div>
+        <% for(let idx in products){ %>
+          <div class="product">
+            <img
+              src="<%= products[idx].imageUrl %>"
+              alt="Book image"
+            />
+            <div class="product-details">
+              <div class="product-title"><%= products[idx].title %></div>
+              <div class="product-description">
+                <%= products[idx].description %>
+              </div>
+              <div class="product-price"><%= products[idx].price %></div>
+            </div>
+            <div class="product-button">
+              <a class="link-button" href="/productDetail">Details</a>
+              <a class="link-button" href="/cart">Add to card</a>
+            </div>
+          </div>
+       <% } %>
+      </div>
+    </main>
+    <%- include('./includes/footer.ejs') %>
+  </body>
+</html>
+
